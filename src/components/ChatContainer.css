@@ -1,0 +1,640 @@
+/* ── Dialogue Section ── */
+.dialogue-section {
+  padding: 0;
+}
+
+.chat-spacer {
+  height: 48px;
+}
+
+/* ── Claim span highlights in content ── */
+@property --span-a {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+.claims1,
+.claims2,
+.claims3 {
+  --span-a: 0;
+  border-bottom: none;
+  padding: 1px 1px;
+  margin: 0 -1px;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  background:
+    linear-gradient(104deg,
+      rgba(255, 0, 0, 0) 0.9%,
+      rgba(255, 0, 0, calc(0.18 * var(--span-a))) 2.4%,
+      rgba(255, 0, 0, calc(0.14 * var(--span-a))) 5.8%,
+      rgba(255, 0, 0, calc(0.18 * var(--span-a))) 93%,
+      rgba(255, 0, 0, calc(0.14 * var(--span-a))) 96%,
+      rgba(255, 0, 0, 0) 98%);
+  background-size: 0% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  box-shadow: none;
+}
+
+.claims1.span-active,
+.claims2.span-active,
+.claims3.span-active {
+  --span-a: 1;
+  background-size: 100% 100%;
+  transition: background-size 0.5s ease, --span-a 0s;
+}
+
+.claims1.span-fading,
+.claims2.span-fading,
+.claims3.span-fading {
+  --span-a: 0;
+  background-size: 100% 100%;
+  transition: --span-a 1s ease;
+}
+
+/* ── Testimony Card ── */
+.testimony-card {
+  margin: 0 12px;
+}
+
+@media (min-width: 1024px) {
+  .testimony-card {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
+
+.testimony-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding-left: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimony-body {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  margin-top: -10px;
+}
+
+.testimony-source:hover .testimony-name {
+  text-decoration: underline;
+}
+
+.testimony-avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.testimony-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Red dot & tooltip: mobile only */
+@media (min-width: 1024px) {
+
+  .new-person-dot,
+  .profile-tooltip {
+    display: none !important;
+  }
+}
+
+/* New Person Red Dot */
+.new-person-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--red);
+  border-radius: 8px;
+  border: 2px solid var(--ivory);
+  z-index: 10;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.new-person-dot.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  animation: dotPulse 2s ease-in-out 0.3s 2;
+}
+
+.new-person-dot.dismissed {
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+  animation: none;
+}
+
+@keyframes dotPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+}
+
+/* Profile Tooltip */
+.profile-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 10px;
+  margin-bottom: 8px;
+  background: rgba(var(--red-rgb), 0.85);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Pretendard Variable', sans-serif;
+  padding: 5px 10px;
+  border-radius: 10px;
+  white-space: nowrap;
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  letter-spacing: -0.3px;
+}
+
+.profile-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 10px;
+  border: 5px solid transparent;
+  border-top-color: rgba(var(--red-rgb), 0.85);
+  border-bottom: none;
+}
+
+.profile-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.profile-tooltip.hidden {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+}
+
+.testimony-info {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.testimony-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-900);
+  letter-spacing: -0.5px;
+  font-family: 'Pretendard Variable', sans-serif;
+}
+
+.testimony-role {
+  font-size: 14px;
+  color: var(--gray-500);
+  letter-spacing: -0.5px;
+  font-family: 'Pretendard Variable', sans-serif;
+}
+
+.testimony-content {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--gray-900);
+  font-family: 'Pretendard Variable', sans-serif;
+  letter-spacing: -0.2px;
+}
+
+.testimony-hearing {
+  font-size: 12px;
+  color: var(--gray-400);
+  font-family: 'Pretendard Variable', sans-serif;
+  text-align: right;
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+/* ── Interjection (defendant interrupting) ── */
+.interjection {
+  display: block;
+  background: #f8f8f8;
+  border-left: 3px solid var(--red);
+  border-radius: 0 8px 8px 0;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--gray-800);
+  letter-spacing: -0.2px;
+}
+
+.interjection-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Pretendard Variable', sans-serif;
+  color: var(--red);
+  margin-bottom: 2px;
+}
+
+.interjection-name {
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+/* ── Editorial Card (shared base) ── */
+.data-card,
+.recording-block,
+.calllog-card,
+.image-card,
+.gallery-card {
+  background: linear-gradient(to top left, #fdfbf7, var(--cream), #f7f6f2);
+  padding: 32px 20px;
+  margin: 0 12px;
+  position: relative;
+  box-shadow: var(--shadow-card-heavy);
+}
+
+.data-card,
+.recording-block,
+.calllog-card {
+  padding: 32px 20px;
+}
+
+.image-card {
+  padding: 20px 12px;
+}
+
+@media (min-width: 1024px) {
+
+  .data-card,
+  .recording-block,
+  .calllog-card,
+  .image-card,
+  .gallery-card {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* ── Data Card ── */
+.data-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 16px;
+  color: var(--gray-900);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  font-weight: 600;
+  font-family: 'Noto Serif KR', serif;
+  justify-content: center;
+}
+
+.data-card-source {
+  padding-top: 12px;
+  font-size: 12px;
+  color: var(--gray-900);
+  font-family: 'Pretendard Variable', sans-serif;
+  letter-spacing: 0.3px;
+  text-align: right;
+}
+
+.data-content {
+  font-size: 14.5px;
+  line-height: 2.7;
+  color: var(--gray-900);
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent calc(1lh - 1px),
+      var(--sand) calc(1lh - 1px),
+      var(--sand) 1lh);
+  background-size: 100% 1lh;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.data-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.data-bullet {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gray-900);
+  position: relative;
+  top: -1px;
+}
+
+/* ── Call Log Card ── */
+.calllog-card .num-cell {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.calllog-card thead th {
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-800);
+  text-align: left;
+  border: 1px solid var(--gray-300);
+  letter-spacing: -0.3px;
+  background-color: var(--gray-100);
+  white-space: nowrap;
+}
+
+.calllog-card .calllog-num {
+  font-size: 13px;
+  color: var(--gray-900);
+  letter-spacing: -0.5px;
+}
+
+/* ── Recording Block ── */
+
+.recording-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.recording-label {
+  font-size: 15.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gray-900);
+  padding-bottom: 16px;
+  text-align: center;
+  width: 100%;
+  /* border-bottom: 1px solid var(--gray-600); */
+}
+
+.hearing-cite {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+  color: var(--gray-400);
+}
+
+.recording-content {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--gray-900);
+  letter-spacing: -0.2px;
+}
+
+.recording-table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.recording-table thead th {
+  border-left: 0px;
+  border-bottom: 0px;
+}
+
+
+.recording-table .line td {
+  border-bottom: 1px solid var(--gray-300);
+  border-right: 1px solid var(--gray-300);
+}
+
+.recording-table thead tr:first-child th,
+.recording-table tbody tr:first-child td {
+  border-top: 1px solid var(--gray-300);
+}
+
+.recording-table thead th:first-child,
+.recording-table .line td:first-child {
+  border-left: 1px solid var(--gray-300);
+}
+
+.recording-table .line td {
+  padding: 4px 8px;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.recording-table .speaker-cell {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.recording-table .speaker {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-900);
+  letter-spacing: -0.5px;
+}
+
+.recording-content .line-subtitle {
+  font-family: 'Pretendard Variable', sans-serif;
+  font-size: 12px;
+  color: var(--gray-500);
+  padding: 10px 0 4px;
+  letter-spacing: -0.3px;
+}
+
+.recording-source {
+  padding-top: 12px;
+  font-size: 12px;
+  color: var(--gray-900);
+  font-family: 'Pretendard Variable', sans-serif;
+  letter-spacing: 0.3px;
+  text-align: right;
+}
+
+.transcript-summary {
+  font-size: 14.5px;
+  line-height: 2;
+  color: var(--gray-900);
+  font-family: 'Pretendard Variable', sans-serif;
+}
+
+/* ── Image Card ── */
+.image-card {
+  overflow: hidden;
+}
+
+.image-card-img {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin: 0px auto;
+}
+
+/* ── Hand-drawn Circle Overlay ── */
+.image-circle-wrap {
+  position: relative;
+}
+
+.circle-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hand-drawn-circle {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-card-caption {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 600;
+  text-align: center;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--gray-900);
+  letter-spacing: -0.2px;
+  white-space: pre-line;
+  margin-bottom: 24px;
+}
+
+.image-card-source {
+  padding-top: 12px;
+  font-size: 12px;
+  color: var(--gray-900);
+  font-family: 'Pretendard Variable', sans-serif;
+  letter-spacing: 0.3px;
+  text-align: right;
+}
+
+/* ── Gallery Card ── */
+.gallery-viewport {
+  position: relative;
+  user-select: none;
+}
+
+.gallery-slides {
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-slide {
+  display: none;
+  position: relative;
+}
+
+.gallery-slide.active {
+  display: block;
+}
+
+.gallery-img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.gallery-dim {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: block;
+  filter: grayscale(100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.gallery-slide.dimmed .gallery-dim {
+  opacity: 1;
+}
+
+.gallery-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  font-size: 18px;
+  font-family: 'Pretendard Variable', sans-serif;
+  letter-spacing: -0.3px;
+  padding: 6px 14px;
+  border-radius: 16px;
+  white-space: nowrap;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-hint.hidden {
+  opacity: 0;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--white);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 2;
+}
+
+.gallery-nav:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.gallery-prev {
+  left: 8px;
+}
+
+.gallery-next {
+  right: 8px;
+}
+
+.gallery-counter {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--white);
+  font-size: 12px;
+  font-family: 'Pretendard Variable', sans-serif;
+  letter-spacing: -0.3px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  z-index: 2;
+}

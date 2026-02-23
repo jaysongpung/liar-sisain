@@ -1,0 +1,72 @@
+/* ── Color System ── */
+:root {
+  /* ── Gray Scale ── */
+  --gray-900: #1a1a1a;
+  /* IntroSection.css:9,16,25,35  ChatContainer.css:174,189,219,236,255,257,273,301,319,328,349  ClaimCard.css:21  OutroSection.css:4,12  StickyClaimBubble.css:6,16 */
+  --gray-800: #282828;
+  /* StickyClaimBubble.css:6 */
+  --gray-600: #777;
+  /* IntroSection.css:60 */
+  --gray-500: #999;
+  /* IntroSection.css:49  ChatContainer.css:181,196,311  ClaimCard.css:32  OutroSection.css:27,31  RelationshipMap.css:81 */
+  --gray-400: #aaa;
+  /* ChatContainer.css:266 */
+  --gray-300: #bbb;
+  /* OutroSection.css:44 */
+  --gray-200: #ccc;
+  /* RelationshipMap.css:28 */
+  --gray-100: #eeeeee;
+  /* RelationshipMap.css:6 */
+
+  /* ── Warm Neutrals ── */
+  --cream: #faf8f3;
+  /* ChatContainer.css:206 */
+  --ivory: #f5f0e8;
+  /* ChatContainer.css:87 */
+  --sand: #d5d0c8;
+  /* ChatContainer.css:222 */
+  --taupe: #cbc5b8;
+  /* IntroSection.css:55  OutroSection.css:18 */
+
+  /* ── Core ── */
+  --white: #fff;
+  /* ChatContainer.css:38,128  StickyClaimBubble.css:7 */
+  --red: #e63946;
+  /* ChatContainer.css:85  RelationshipMap.css:48,52  StickyClaimBubble.css:32 */
+  --red-rgb: 230, 57, 70;
+  /* ChatContainer.css:127,149  ClaimCard.css:11 */
+
+  /* ── Shadow ── */
+  --shadow-card: 10px 10px 40px rgba(0, 0, 0, 0.11);
+  /* ChatContainer.css:41 */
+  --shadow-card-heavy: 20px 20px 50px rgba(0, 0, 0, 0.15);
+  /* ChatContainer.css:210 */
+  --shadow-image: 20px 20px 50px rgba(0, 0, 0, 0.3);
+  /* ChatContainer.css:337 */
+
+  /* ── White Opacity ── */
+  --white-8: rgba(255, 255, 255, 0.08);
+  /* RelationshipMap.css:99,111 */
+  --white-15: rgba(255, 255, 255, 0.15);
+  /* RelationshipMap.css:124 */
+  --white-25: rgba(255, 255, 255, 0.25);
+  /* IntroSection.css:95 */
+  --white-50: rgba(255, 255, 255, 0.5);
+  /* RelationshipMap.css:133 */
+  --white-60: rgba(255, 255, 255, 0.6);
+  /* RelationshipMap.css:112 */
+  --white-80: rgba(255, 255, 255, 0.8);
+  /* style.css:92 */
+  --white-85: rgba(255, 255, 255, 0.85);
+  /* RelationshipMap.css:125 */
+
+  /* ── Dark Opacity ── */
+  --dark-75: rgba(30, 30, 30, 0.75);
+  /* RelationshipMap.css:97 */
+
+  /* ── Highlight (RGB triplets) ── */
+  --gray-rgb: 160, 160, 160;
+  /* ChatContainer.css:17 */
+  --red-highlight-rgb: 255, 0, 0;
+  /* ChatContainer.css:18 */
+}

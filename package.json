@@ -1,0 +1,15 @@
+{
+  "name": "liar-sisain",
+  "private": true,
+  "version": "1.0.0",
+  "description": "내란 우두머리 윤석열의 10가지 거짓말 — Interactive journalism by SisaIN",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  },
+  "license": "CC-BY-NC-4.0"
+}

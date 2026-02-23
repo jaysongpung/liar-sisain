@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  word-break: keep-all;
+}
+
+body {
+  font-family: 'Pretendard Variable', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #1a1a1a;
+}
+
+#app {
+  min-height: 100dvh;
+}
+
+/* ── Two-column layout ── */
+.layout {
+  display: flex;
+  min-height: 100dvh;
+}
+
+.layout-map {
+  position: sticky;
+  top: 0;
+  flex: 1;
+  height: 100dvh;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.layout-content {
+  width: 680px;
+  flex-shrink: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgb(245, 241, 241);
+}
+
+/* Fade gradient on the map's right edge so it looks underlying */
+.layout-map::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.02), transparent);
+  /* fade edge — keep raw */
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ── Mobile: map as fullscreen overlay ── */
+@media (max-width: 1023px) {
+  .layout-map {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    height: 100dvh;
+    border-right: none;
+  }
+
+  .layout-map.overlay-active {
+    display: block;
+    animation: mapOverlayIn 0.25s ease;
+  }
+
+  .layout-content {
+    width: 100%;
+  }
+}
+
+/* ── Map overlay close button (mobile only) ── */
+.map-overlay-close {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .map-overlay-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1001;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    color: white;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .map-overlay-close:active {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes mapOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

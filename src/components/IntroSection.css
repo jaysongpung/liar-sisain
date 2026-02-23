@@ -1,0 +1,156 @@
+.intro-section {
+  padding: 0 0 20px;
+  background: var(--gray-900);
+  color: var(--white);
+}
+
+.intro-hero {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 420px) {
+  .intro-hero {
+    aspect-ratio: 1.2/1;
+  }
+}
+
+@media (min-width: 768px) {
+  .intro-hero {
+    aspect-ratio: 5/3;
+  }
+}
+
+
+.intro-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vw;
+  background: linear-gradient(to bottom, transparent, #1a1a1a7c);
+  pointer-events: none;
+}
+
+.intro-title {
+  position: absolute;
+  bottom: -0.5em;
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  font-size: 36px;
+  font-weight: 600;
+  font-family: 'Noto Serif KR', serif;
+  line-height: 135%;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.intro-body {
+  padding: 0 20px;
+}
+
+.intro-body p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 175%;
+  color: var(--white-85);
+  letter-spacing: -0.15px;
+  margin-bottom: 10px;
+}
+
+.intro-body p+p {
+  margin-top: 8px;
+}
+
+.intro-credits {
+  padding: 0 20px 10px 20px;
+  margin-top: 32px;
+  font-family: 'Pretendard Variable', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 200%;
+  color: var(--gray-400);
+}
+
+.intro-credits b {
+  font-weight: 600;
+}
+
+.intro-judge-icon {
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+  padding-top: 100px;
+  border-top: 1px solid var(--white-25);
+  color: var(--gray-400);
+}
+
+.intro-judge-icon img {
+  width: 44px;
+  height: 44px;
+}
+
+.intro-guide {
+  margin: 16px 20px 0;
+  font-family: 'Pretendard Variable', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--gray-100);
+  text-align: center;
+}
+
+/* ── ATF Scroll Hint ── */
+.scroll-hint-atf {
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 28px;
+  padding-top: 80px;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-hint-atf.hidden {
+  opacity: 0;
+}
+
+.scroll-hint-atf-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--gray-900) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.scroll-hint-atf-icon {
+  position: relative;
+  color: var(--gray-200);
+  animation: subtleBounceAtf 2s ease-in-out infinite;
+}
+
+@keyframes subtleBounceAtf {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(4px);
+  }
+}
